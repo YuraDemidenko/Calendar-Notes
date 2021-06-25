@@ -1,0 +1,242 @@
+@calendar-font: 'Abhaya Libre', serif;
+
+.calendar-wrapper {
+    user-select: none;
+    font-family: @calendar-font;
+    .header {
+        position: fixed;
+        background: #2F3542;
+        border: 1px solid #2F3542;
+        box-sizing: border-box;
+        padding: 25px 20px 10px 20px;
+        font-weight: 500;
+        top: 0;
+        left: 0;
+        right: 0;
+        .header-box {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 12px 0 30px;
+            
+            .calendar-title {
+                .month {
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 36px;
+                    line-height: 42px;
+                    letter-spacing: 0.05em;
+                    color: #ffff;
+                }
+                .year {
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 48px;
+                    line-height: 57px;
+                    letter-spacing: 0.05em;
+                    color: #ffff;
+                }
+            }
+            .nav-bar {
+                display: flex;
+                .arrow-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-left: 20px;
+                    .past-month {
+                        padding: 10px 10px 6px 8px;
+                        margin: 0 23px 5px 0;
+                        background-color: #A4B0BE;
+                        border-radius: 50%;
+
+                        &::after {
+                            content: url('../img/past.arrow.svg');
+                        }
+                        &:hover {
+                            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+        
+                    .next-month {
+                        margin: 0 0 5px 25px;
+                        padding: 10px 8px 6px 10px;
+                        background-color: #A4B0BE;
+                        border-radius: 50%;
+                        &::after {
+                            content: url('../img/future.arrow.svg');
+                        }
+
+                        &:hover {
+                            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+
+                .today-btn {
+                    padding: 13px 50px 12px;
+                    background-color: #747D8C;
+                    border-radius: 3px;
+                    margin: 6px 52px 6px;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: 0.05em;
+                    cursor: pointer;
+                    &:hover {
+                        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+                    }
+                }
+
+                
+                
+               
+            }
+
+        }
+        .days-of-week {
+            margin: 10px 30px 0;
+            
+            ul {
+                margin-top: 10px;
+                display: flex;
+                text-align: right;
+                justify-content: space-between;
+                li {
+                    color: #ffff;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 25px;
+                    line-height: 29px;
+                    letter-spacing: 0.09em;
+
+                }
+            }
+        }
+    }
+
+    .calendar-body {
+        padding: 134px 0 0;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        box-sizing: border-box;
+        .day {
+            border-left: 1px solid rgba(47, 53, 66, 0.17);
+            border-right: 1px solid rgba(47, 53, 66, 0.17);
+            border-bottom: 1px solid rgba(47, 53, 66, 0.17);
+            border-top: none;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+            &.today {
+                background-color: #747D8C;
+                box-shadow: inset 0px 20px 35px rgba(33, 106, 56, 0.15);
+                .date {
+                    color: #ffff !important;
+                }
+            }
+
+            
+            .add-btn {
+                position: absolute;
+                top: 11px;
+                right: 5px;
+                display: inline-block;
+                background-color:  #2F3542;
+                border-radius: 50%;
+                color: white;
+                padding: 3px 10px 4px 11px;
+                z-index: 5;
+                opacity: 0;
+                font-family: 'Roboto', sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 28px;
+                transition: all 0.3s ease;
+            }
+
+            &:hover {
+                .add-btn {
+                    opacity: 1;
+                }
+            }
+            
+            .note-wrapper {
+                box-sizing: border-box;
+                overflow: auto;
+                position: absolute;
+                height: 70%;
+                width: 100%;
+                bottom: 0;
+                padding: 5px;
+                text-align: left;
+                z-index: 2;
+                .note {
+                    display: flex;
+                    box-sizing: border-box;
+                    margin: 5px 0;
+                    width: 100%;
+                    .text-wrapper {
+                        box-sizing: border-box;
+                        overflow-wrap: break-word;
+                        z-index: 3;
+                        width: 100%;
+                        background: #DEDEDE;
+                        border-radius: 5px;
+                        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+                        
+                        p{
+                            padding: 5px 10px 5px 5px;
+                            font-size: 18px;
+                        }
+                    }
+                    
+                }
+            }
+            .date {
+                margin: 15px 0 0 0;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 26px;
+                letter-spacing: 0.05em;
+                color: #2F3542;  
+            }
+            
+        }
+        .day:nth-child(7n + 7), .day:nth-child(7n + 6) {
+            .date {
+                color: #FF5463;
+            }
+        }
+    }
+    
+}
+
+
+
+
+
+
+.small-screen-msg {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .msg {
+
+        p {
+            font-size: 25px;
+            text-align: center;
+        }
+    }
+
+}
