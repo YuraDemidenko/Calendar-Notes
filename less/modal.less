@@ -1,0 +1,94 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    z-index: 5;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .overlay {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.6);
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 15;
+    }
+    .modal {
+        position: relative;
+        z-index: 20;
+        margin: 134px auto;
+        width: 800px;
+        background-color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        textarea {
+            height: 207px;
+            width: 100%;
+            font-size: 18px;
+            resize: none;
+            outline: none;
+            border: none;
+            
+        }
+
+        
+        .modal-btn-group {
+            width: 100%;
+            .add-note-btn {
+                padding: 15px 0;
+                text-align: center;
+                border: none;
+                width: 100%;
+                cursor: pointer;
+                background-color: #2ED573;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 21px;
+                letter-spacing: 0.05em;
+            }
+
+            .change-note-wrapper {
+                display: flex;
+                justify-content: space-between;
+                .save-note-btn {
+                    width: 50%;
+                    padding: 15px 0;
+                    background-color: #2ED573;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: 0.05em;
+                    text-align: center;
+                    cursor: pointer;
+                }
+                .delete-note-btn {
+                    width: 50%;
+                    padding: 15px 0;
+                    background-color: #FF5463;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: 0.05em;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
+
+        }
+        
+    }
+}
